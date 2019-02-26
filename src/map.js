@@ -5,6 +5,14 @@ import axios from "axios";
 
 import Loader from "./Spinner";
 
+
+
+const style={
+  chip:{
+    background: 'linear-gradient(to right bottom, #430089, #82ffa1)',
+  }
+}
+
 export default class App extends React.Component {
   state = {
     hospital: []
@@ -12,7 +20,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     axios
-      .get(`https://find-hospital.herokuapp.com/api/hospitals/cordinate`)
+      .get(`https://find-hospital.herokuapp.com/api/hospitals/cordinate/${!this.props.type?this.props.match.params.type:'all'}`)
       .then(res => {
         this.setState({
           hospital: res.data
@@ -26,8 +34,11 @@ export default class App extends React.Component {
       return (
         <div>
           <Map
+      
             markerPosition={{ lat: 49.8419, lng: 24.0315 }}
             hospitals={this.state.hospital}
+            type={this.props.type?12:11}
+            opacity={0.5}
           />
         </div>
       );

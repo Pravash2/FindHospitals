@@ -73,6 +73,8 @@ export default class App extends React.Component {
 
 var sectionStyle = {
   width: "100%",
+  margin:0,
+  pading:0,
   height: `${window.innerheight}`,
   backgroundImage: `url(https://images.unsplash.com/photo-1512069511692-b82d787265cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60)`
 };

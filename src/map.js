@@ -38,7 +38,7 @@ export default class App extends React.Component {
             markerPosition={{ lat: 49.8419, lng: 24.0315 }}
             hospitals={this.state.hospital}
             type={this.props.type?12:11}
-            opacity={0.5}
+            opacity={0.8}
           />
         </div>
       );

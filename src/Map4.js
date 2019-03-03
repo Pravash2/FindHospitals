@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
-import Map from "./Mapp";
+import Map from "./Map5";
 import axios from "axios";
 
 import Loader from "./Spinner";
@@ -18,11 +18,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     axios
-      .get(
-        `https://find-hospital.herokuapp.com/api/hospitals/cordinate/${
-          !this.props.type ? this.props.match.params.type : ""
-        }`
-      )
+      .get(`https://find-hospital.herokuapp.com/api/hospitals/all`)
       .then(res => {
         this.setState({
           hospital: res.data

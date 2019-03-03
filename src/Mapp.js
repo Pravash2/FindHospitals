@@ -14,8 +14,7 @@ import L from "leaflet";
 
 import Dialog from "./Dialog.js";
 import Loader from "./Spinner";
-import AppBar from './AppBar'
-
+import { Link } from "react-router-dom";
 
 const app = [
   "https://uploads.codesandbox.io/uploads/user/6f8b104e-6915-422e-95e8-f395886bcc19/5e6p-045-hospital.pn"
@@ -71,13 +70,41 @@ const IconUrl = [
   })
 ];
 
+const getLocation = () => {
+  const geolocation = navigator.geolocation;
+
+  const location = new Promise((resolve, reject) => {
+    if (!geolocation) {
+      reject(new Error("Not Supported"));
+    }
+
+    geolocation.getCurrentPosition(
+      position => {
+        resolve(position);
+      },
+      () => {
+        reject(new Error("Permission denied"));
+      }
+    );
+  });
+  return location;
+};
+
 export default class SimpleExample extends React.Component {
   constructor() {
     super();
     this.state = {
       markers: []
     };
+    navigator.geolocation.getCurrentPosition(position => {
+      const location = JSON.stringify(position);
+      this.setState({ location });
+    });
   }
+  state = {
+    location: 4
+  };
+
   componentDidMount() {
     const hospitals = this.props.hospitals
       .filter(hospital => hospital.Location_Coordinates.length == 2)
@@ -89,243 +116,13 @@ export default class SimpleExample extends React.Component {
 
   render() {
     if (this.state.markers.length > 1) {
-      if(this.props.type==12)
+      console.log(this.state.location);
       return (
-        <div>
         <Map
           style={{ height: `${window.innerHeight}px`, flex: 1 }}
-          center={[20.2961, 85.8245]}
-          zoom={this.props.type}>
-            
-          <TileLayer
-          opacity={this.props.opacity}
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
-          />
-          {this.state.markers.map((position, idx) => {
-            if (position.Hospital_Care_Type == "hospital")
-              return (
-                <Marker
-                  key={`marker-${idx}`}
-                  icon={IconUrl[0]}
-                  position={position.Location_Coordinates}
-                  opacity={this.props.opacity}>
-                  <Popup>
-                    <Dialog
-                      positions={position}
-                      hospitals={this.props.hospitals.filter(
-                        hospital =>
-                          hospital.Location_Coordinates ==
-                          position.Location_Coordinates
-                      )}
-                    />
-                  </Popup>
-                </Marker>
-              );
-            if (position.Hospital_Care_Type == "dentalcare")
-              return (
-                <Marker
-                  key={`marker-${idx}`}
-                  icon={IconUrl[1]}
-                  position={position.Location_Coordinates}
-                  opacity={this.props.opacity}>
-                  <Popup>
-                    <Dialog
-                      positions={position}
-                      hospitals={this.props.hospitals.filter(
-                        hospital =>
-                          hospital.Location_Coordinates ==
-                          position.Location_Coordinates
-                      )}
-                    />
-                  </Popup>
-                </Marker>
-              );
-            if (position.Hospital_Care_Type == "testlab")
-              return (
-                <Marker
-                  key={`marker-${idx}`}
-                  icon={IconUrl[2]}
-                  position={position.Location_Coordinates}
-                  opacity={this.props.opacity}>
-                  <Popup>
-                    <Dialog
-                      positions={position}
-                      hospitals={this.props.hospitals.filter(
-                        hospital =>
-                          hospital.Location_Coordinates ==
-                          position.Location_Coordinates
-                      )}
-                    />
-                  </Popup>
-                </Marker>
-              );
-            if (position.Hospital_Care_Type == "clinic")
-              return (
-                <Marker
-                  key={`marker-${idx}`}
-                  icon={IconUrl[3]}
-                  position={position.Location_Coordinates}
-                  opacity={this.props.opacity}>
-                  <Popup>
-                    <Dialog
-                      positions={position}
-                      hospitals={this.props.hospitals.filter(
-                        hospital =>
-                          hospital.Location_Coordinates ==
-                          position.Location_Coordinates
-                      )}
-                    />
-                  </Popup>
-                </Marker>
-              );
-            if (position.Hospital_Care_Type == "eyecare")
-              return (
-                <Marker
-                  key={`marker-${idx}`}
-                  icon={IconUrl[4]}
-                  position={position.Location_Coordinates}
-                  opacity={this.props.opacity}>
-                  <Popup>
-                    <Dialog
-                      positions={position}
-                      hospitals={this.props.hospitals.filter(
-                        hospital =>
-                          hospital.Location_Coordinates ==
-                          position.Location_Coordinates
-                      )}
-                    />
-                  </Popup>
-                </Marker>
-              );
-            if (position.Hospital_Care_Type == "ayurvedic")
-              return (
-                <Marker
-                  key={`marker-${idx}`}
-                  icon={IconUrl[5]}
-                  position={position.Location_Coordinates}
-                  opacity={this.props.opacity}>
-                  <Popup>
-                    <Dialog
-                      positions={position}
-                      hospitals={this.props.hospitals.filter(
-                        hospital =>
-                          hospital.Location_Coordinates ==
-                          position.Location_Coordinates
-                      )}
-                    />
-                  </Popup>
-                </Marker>
-              );
-            if (position.Hospital_Care_Type == "homopatic")
-              return (
-                <Marker
-                  key={`marker-${idx}`}
-                  icon={IconUrl[6]}
-                  position={position.Location_Coordinates}
-                  opacity={this.props.opacity}>
-                  <Popup>
-                    <Dialog
-                      positions={position}
-                      hospitals={this.props.hospitals.filter(
-                        hospital =>
-                          hospital.Location_Coordinates ==
-                          position.Location_Coordinates
-                      )}
-                    />
-                  </Popup>
-                </Marker>
-              );
-            if (position.Hospital_Care_Type == "nursinghome")
-              return (
-                <Marker
-                  key={`marker-${idx}`}
-                  icon={IconUrl[7]}
-                  position={position.Location_Coordinates}
-                  opacity={this.props.opacity}>
-                  <Popup>
-                    <Dialog
-                      positions={position}
-                      hospitals={this.props.hospitals.filter(
-                        hospital =>
-                          hospital.Location_Coordinates ==
-                          position.Location_Coordinates
-                      )}
-                    />
-                  </Popup>
-                </Marker>
-              );
-            if (position.Hospital_Care_Type == "veterinary")
-              return (
-                <Marker
-                  key={`marker-${idx}`}
-                  icon={IconUrl[8]}
-                  position={position.Location_Coordinates}
-                  opacity={this.props.opacity}>
-                  <Popup>
-                    <Dialog
-                      positions={position}
-                      hospitals={this.props.hospitals.filter(
-                        hospital =>
-                          hospital.Location_Coordinates ==
-                          position.Location_Coordinates
-                      )}
-                    />
-                  </Popup>
-                </Marker>
-              );
-            if (position.Hospital_Care_Type == "communityhealthcentre")
-              return (
-                <Marker
-                  key={`marker-${idx}`}
-                  icon={IconUrl[9]}
-                  position={position.Location_Coordinates}
-                  opacity={this.props.opacity}>
-                  <Popup>
-                    <Dialog
-                      positions={position}
-                      hospitals={this.props.hospitals.filter(
-                        hospital =>
-                          hospital.Location_Coordinates ==
-                          position.Location_Coordinates
-                      )}
-                    />
-                  </Popup>
-                </Marker>
-              );
-            if (position.Hospital_Care_Type == "childcare")
-              return (
-                <Marker
-                  key={`marker-${idx}`}
-                  icon={IconUrl[10]}
-                  position={position.Location_Coordinates}
-                  opacity={this.props.opacity}>
-                  <Popup>
-                    <Dialog
-                      positions={position}
-                      hospitals={this.props.hospitals.filter(
-                        hospital =>
-                          hospital.Location_Coordinates ==
-                          position.Location_Coordinates
-                      )}
-                    />
-                  </Popup>
-                </Marker>
-              );
-          })}
-
-          <CircleMarker radius={20} center={[20.2961, 85.8245]} />
-        </Map>
-        </div>
-      )
-         if(this.props.type==11)
-      return (
-        <div>
-        <AppBar lists={this.state.markers} />
-        <Map
-          style={{ height: `${window.innerHeight}px`, flex: 1 }}
-          center={[20.2961, 85.8245]}
-          zoom={this.props.type}>
+          center={[17.597, 78.4863]}
+          zoom={13}
+        >
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
@@ -337,16 +134,15 @@ export default class SimpleExample extends React.Component {
                   key={`marker-${idx}`}
                   icon={IconUrl[0]}
                   position={position.Location_Coordinates}
-                  opacity={this.props.opacity}>
+                  opacity={1}
+                >
                   <Popup>
-                    <Dialog
-                      positions={position}
-                      hospitals={this.props.hospitals.filter(
-                        hospital =>
-                          hospital.Location_Coordinates ==
-                          position.Location_Coordinates
-                      )}
-                    />
+                    <Link
+                      to={`/hospital/${this.state.markers[idx]._id}`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      {position.Hospital_Name}
+                    </Link>
                   </Popup>
                 </Marker>
               );
@@ -356,16 +152,15 @@ export default class SimpleExample extends React.Component {
                   key={`marker-${idx}`}
                   icon={IconUrl[1]}
                   position={position.Location_Coordinates}
-                  opacity={this.props.opacity}>
+                  opacity={1}
+                >
                   <Popup>
-                    <Dialog
-                      positions={position}
-                      hospitals={this.props.hospitals.filter(
-                        hospital =>
-                          hospital.Location_Coordinates ==
-                          position.Location_Coordinates
-                      )}
-                    />
+                    <Link
+                      to={`/hospital/${this.state.markers[idx]._id}`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      {position.Hospital_Name}
+                    </Link>
                   </Popup>
                 </Marker>
               );
@@ -375,16 +170,15 @@ export default class SimpleExample extends React.Component {
                   key={`marker-${idx}`}
                   icon={IconUrl[2]}
                   position={position.Location_Coordinates}
-                  opacity={this.props.opacity}>
+                  opacity={1}
+                >
                   <Popup>
-                    <Dialog
-                      positions={position}
-                      hospitals={this.props.hospitals.filter(
-                        hospital =>
-                          hospital.Location_Coordinates ==
-                          position.Location_Coordinates
-                      )}
-                    />
+                    <Link
+                      to={`/hospital/${this.state.markers[idx]._id}`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      {position.Hospital_Name}
+                    </Link>
                   </Popup>
                 </Marker>
               );
@@ -394,16 +188,15 @@ export default class SimpleExample extends React.Component {
                   key={`marker-${idx}`}
                   icon={IconUrl[3]}
                   position={position.Location_Coordinates}
-                  opacity={this.props.opacity}>
+                  opacity={1}
+                >
                   <Popup>
-                    <Dialog
-                      positions={position}
-                      hospitals={this.props.hospitals.filter(
-                        hospital =>
-                          hospital.Location_Coordinates ==
-                          position.Location_Coordinates
-                      )}
-                    />
+                    <Link
+                      to={`/hospital/${this.state.markers[idx]._id}`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      {position.Hospital_Name}
+                    </Link>
                   </Popup>
                 </Marker>
               );
@@ -413,16 +206,15 @@ export default class SimpleExample extends React.Component {
                   key={`marker-${idx}`}
                   icon={IconUrl[4]}
                   position={position.Location_Coordinates}
-                  opacity={this.props.opacity}>
+                  opacity={1}
+                >
                   <Popup>
-                    <Dialog
-                      positions={position}
-                      hospitals={this.props.hospitals.filter(
-                        hospital =>
-                          hospital.Location_Coordinates ==
-                          position.Location_Coordinates
-                      )}
-                    />
+                    <Link
+                      to={`/hospital/${this.state.markers[idx]._id}`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      {position.Hospital_Name}
+                    </Link>
                   </Popup>
                 </Marker>
               );
@@ -432,16 +224,15 @@ export default class SimpleExample extends React.Component {
                   key={`marker-${idx}`}
                   icon={IconUrl[5]}
                   position={position.Location_Coordinates}
-                  opacity={this.props.opacity}>
+                  opacity={1}
+                >
                   <Popup>
-                    <Dialog
-                      positions={position}
-                      hospitals={this.props.hospitals.filter(
-                        hospital =>
-                          hospital.Location_Coordinates ==
-                          position.Location_Coordinates
-                      )}
-                    />
+                    <Link
+                      to={`/hospital/${this.state.markers[idx]._id}`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      {position.Hospital_Name}
+                    </Link>
                   </Popup>
                 </Marker>
               );
@@ -451,16 +242,15 @@ export default class SimpleExample extends React.Component {
                   key={`marker-${idx}`}
                   icon={IconUrl[6]}
                   position={position.Location_Coordinates}
-                  opacity={this.props.opacity}>
+                  opacity={1}
+                >
                   <Popup>
-                    <Dialog
-                      positions={position}
-                      hospitals={this.props.hospitals.filter(
-                        hospital =>
-                          hospital.Location_Coordinates ==
-                          position.Location_Coordinates
-                      )}
-                    />
+                    <Link
+                      to={`/hospital/${this.state.markers[idx]._id}`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      {position.Hospital_Name}
+                    </Link>
                   </Popup>
                 </Marker>
               );
@@ -470,16 +260,15 @@ export default class SimpleExample extends React.Component {
                   key={`marker-${idx}`}
                   icon={IconUrl[7]}
                   position={position.Location_Coordinates}
-                  opacity={this.props.opacity}>
+                  opacity={1}
+                >
                   <Popup>
-                    <Dialog
-                      positions={position}
-                      hospitals={this.props.hospitals.filter(
-                        hospital =>
-                          hospital.Location_Coordinates ==
-                          position.Location_Coordinates
-                      )}
-                    />
+                    <Link
+                      to={`/hospital/${this.state.markers[idx]._id}`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      {position.Hospital_Name}
+                    </Link>
                   </Popup>
                 </Marker>
               );
@@ -489,16 +278,15 @@ export default class SimpleExample extends React.Component {
                   key={`marker-${idx}`}
                   icon={IconUrl[8]}
                   position={position.Location_Coordinates}
-                  opacity={this.props.opacity}>
+                  opacity={1}
+                >
                   <Popup>
-                    <Dialog
-                      positions={position}
-                      hospitals={this.props.hospitals.filter(
-                        hospital =>
-                          hospital.Location_Coordinates ==
-                          position.Location_Coordinates
-                      )}
-                    />
+                    <Link
+                      to={`/hospital/${this.state.markers[idx]._id}`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      {position.Hospital_Name}
+                    </Link>
                   </Popup>
                 </Marker>
               );
@@ -508,16 +296,15 @@ export default class SimpleExample extends React.Component {
                   key={`marker-${idx}`}
                   icon={IconUrl[9]}
                   position={position.Location_Coordinates}
-                  opacity={this.props.opacity}>
+                  opacity={1}
+                >
                   <Popup>
-                    <Dialog
-                      positions={position}
-                      hospitals={this.props.hospitals.filter(
-                        hospital =>
-                          hospital.Location_Coordinates ==
-                          position.Location_Coordinates
-                      )}
-                    />
+                    <Link
+                      to={`/hospital/${this.state.markers[idx]._id}`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      {position.Hospital_Name}
+                    </Link>
                   </Popup>
                 </Marker>
               );
@@ -527,24 +314,23 @@ export default class SimpleExample extends React.Component {
                   key={`marker-${idx}`}
                   icon={IconUrl[10]}
                   position={position.Location_Coordinates}
-                  opacity={this.props.opacity}>
+                  opacity={1}
+                >
                   <Popup>
-                    <Dialog
-                      positions={position}
-                      hospitals={this.props.hospitals.filter(
-                        hospital =>
-                          hospital.Location_Coordinates ==
-                          position.Location_Coordinates
-                      )}
+                    <Link
+                      to={`/hospital/${this.state.markers[idx]._id}`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      {position.Hospital_Name}
+                    </Link>
                     />
                   </Popup>
                 </Marker>
               );
           })}
 
-          <CircleMarker radius={20} center={[20.2961, 85.8245]} />
+          <CircleMarker radius={10} center={[17.597, 78.4863]} />
         </Map>
-        </div>
       );
     }
     return <Loader />;

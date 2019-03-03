@@ -13,12 +13,11 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import CloseIcon from "@material-ui/icons/Close";
 import Slide from "@material-ui/core/Slide";
-import EditIcon from "@material-ui/icons/BorderColor";
+import SendIcon from "@material-ui/icons/Send";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 
 import axios from "axios";
 import Loader from "./SpinnerHori";
-import { Link } from "react-router-dom";
 
 const styles = {
   appBar: {
@@ -100,16 +99,6 @@ class FullScreenDialog extends React.Component {
                   className={classes.flex}>
                   {hospital.Hospital_Name}
                 </Typography>
-                <Link
-                  to={`/edit/${hospital._id}`}
-                  style={{ textDecoration: "none" }}>
-                  <IconButton
-                    style={{ color: "#FFC723" }}
-                    onClick={this.handleClose}
-                    aria-label="Close">
-                    <EditIcon />
-                  </IconButton>
-                </Link>
               </Toolbar>
             </AppBar>
             <List>

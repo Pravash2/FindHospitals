@@ -10,6 +10,12 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import DraftsIcon from "@material-ui/icons/Drafts";
+import SendIcon from "@material-ui/icons/Send";
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import ExpandMore from "@material-ui/icons/ExpandMore";
+import StarBorder from "@material-ui/icons/StarBorder";
+import Collapse from "@material-ui/core/Collapse";
 
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
@@ -32,11 +38,16 @@ class TemporaryDrawer extends React.Component {
     bottom: this.props.open,
     right: false
   };
+  state = {
+    opens: false
+  };
 
-  toggleDrawer = (side, open) => () => {
-    this.setState({
-      [side]: open
-    });
+  handleClick = () => {
+    this.setState(state => ({ opens: !state.open }));
+  };
+
+  toggleDrawer = (side, opens) => () => {
+    this.setState({});
   };
 
   render() {
@@ -44,6 +55,58 @@ class TemporaryDrawer extends React.Component {
     const fullList = (
       <div style={{ height: `500px` }} className={classes.fullList}>
         <List>
+          <ListItem button onClick={this.handleClick}>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText inset primary="Filter" />
+            {this.state.open ? <ExpandLess /> : <ExpandMore />}
+          </ListItem>
+          <Collapse in={this.state.opens} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <Link to="/filter/aarogyasri" style={{ textDecoration: "none" }}>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText inset primary="Aarogyasri Scheme" />
+                </ListItem>
+              </Link>
+              <Link to="/filter/ayushman" style={{ textDecoration: "none" }}>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText inset primary="Ayushman Bharat" />
+                </ListItem>
+              </Link>
+              <Link to="/filter/ambulance" style={{ textDecoration: "none" }}>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText inset primary="Ambulance Service" />
+                </ListItem>
+              </Link>
+              <Link to="/filter/pharmacy" style={{ textDecoration: "none" }}>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText inset primary="Pharmacy" />
+                </ListItem>
+              </Link>
+              <Link to="/filter/ecg" style={{ textDecoration: "none" }}>
+                <ListItem button className={classes.nested}>
+                  <ListItemIcon>
+                    <StarBorder />
+                  </ListItemIcon>
+                  <ListItemText inset primary="ECG Services" />
+                </ListItem>
+              </Link>
+            </List>
+          </Collapse>
+          <Divider />
           <Link to="/hospital" style={{ textDecoration: "none" }}>
             <ListItem button>
               <ListItemAvatar>
@@ -187,7 +250,8 @@ class TemporaryDrawer extends React.Component {
             tabIndex={0}
             role="left"
             onClick={this.toggleDrawer("left", false)}
-            onKeyDown={this.toggleDrawer("left", false)}>
+            onKeyDown={this.toggleDrawer("left", false)}
+          >
             {fullList}
           </div>
         </Drawer>

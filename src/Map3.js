@@ -19,11 +19,12 @@ export default class App extends React.Component {
   componentDidMount() {
     axios
       .get(
-        `https://find-hospital.herokuapp.com/api/hospitals/cordinate/${
+        `https://find-hospital.herokuapp.com/api/hospitals/filter/${
           !this.props.type ? this.props.match.params.type : ""
         }`
       )
       .then(res => {
+        console.log(res.data);
         this.setState({
           hospital: res.data
         });
@@ -32,14 +33,13 @@ export default class App extends React.Component {
 
   render() {
     const { markerPosition } = this.state;
+    console.log(this.state.hospital);
     if (this.state.hospital.length > 1) {
       return (
         <div>
           <Map
             markerPosition={{ lat: 49.8419, lng: 24.0315 }}
-            hospitals={
-              this.props.hospital ? this.props.hospital : this.state.hospital
-            }
+            hospitals={this.state.hospital}
             type={this.props.type ? 12 : 11}
             opacity={0.8}
           />

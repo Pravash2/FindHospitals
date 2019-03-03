@@ -4,50 +4,51 @@ import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
+
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+import MenuIcon from "@material-ui/icons/Directions";
 
 import { Link } from "react-router-dom";
 
 const styles = {
   root: {
     flexGrow: 1
-  },
-  grow: {
-    flexGrow: 1,
-    marginLeft: 20
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20
   }
 };
 
-
-
-function ButtonAppBar(props) {
+function SimpleAppBar(props) {
   const { classes } = props;
+
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{ backgroundColor: "transparent" }}>
+      <AppBar position="static" color="default">
         <Toolbar>
-          <Typography variant="h6" color="default" className={classes.grow}>
-            "{props.lists.length}" results are found
+          <Typography variant="h6" color="inherit">
+            {props.HospitalName}
           </Typography>
-          <Link to="/" style={{textDecoration:'none'}}>
-          <Button  color="default">
-            Back
-          </Button>
-          </Link>
+
+          <IconButton
+            style={{ margin: "auto", marginRight: "0", color: "blue" }}
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="Menu"
+          >
+            <a
+              href={`https://maps.google.com?saddr=${17.597},${78.4863}&daddr=${
+                props.cordinate[0]
+              },${props.cordinate[1]}`}
+            >
+              <MenuIcon />
+            </a>
+          </IconButton>
         </Toolbar>
       </AppBar>
     </div>
   );
 }
 
-ButtonAppBar.propTypes = {
+SimpleAppBar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default (withStyles(styles)(ButtonAppBar));
+export default withStyles(styles)(SimpleAppBar);

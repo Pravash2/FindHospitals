@@ -1,19 +1,34 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
-import "./styles.css";
-import Form from './Editform';
-import Map from './map'
+import Map from "./map";
+import Map2 from "./map";
+import SearchBar from "./searchBar";
 import { Route, Link, BrowserRouter as Router, Switch } from "react-router-dom";
+import "./styles.css";
+import "./leaflet.css";
+import List from "./List";
+import HospitalPage from "./Hospitalpage.js";
+import Map4 from "./Map4";
 
+function App() {
+  return (
+    <div className="App">
+      <SearchBar />
+      <Map2 type="true" />
+    </div>
+  );
+}
 
 const routing = (
   <Router>
     <div>
       <Switch>
-        <Route path="/edit/:id" component={Form} />
-        <Route path="/:type" component={Map} />
         <Route exact path="/" component={App} />
+        <Route path="/search/:search" component={Map4} />
+        <Route path="/filter/:type" component={List} />
+        <Route path="/emergency" component={Map4} />
+        <Route path="/hospital/:id" component={HospitalPage} />
+        <Route path="/:type" component={Map} />
       </Switch>
     </div>
   </Router>

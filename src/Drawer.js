@@ -15,6 +15,7 @@ import SendIcon from "@material-ui/icons/Send";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import StarBorder from "@material-ui/icons/StarBorder";
+import Diagonsis from "@material-ui/icons/Hotel";
 import Collapse from "@material-ui/core/Collapse";
 
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
@@ -55,6 +56,14 @@ class TemporaryDrawer extends React.Component {
     const fullList = (
       <div style={{ height: `500px` }} className={classes.fullList}>
         <List>
+          <Link to="/diagnosis" style={{ textDecoration: "none" }}>
+            <ListItem button className={classes.nested}>
+              <ListItemIcon>
+                <Diagonsis />
+              </ListItemIcon>
+              <ListItemText inset primary="Diagnosis" />
+            </ListItem>
+          </Link>
           <ListItem button onClick={this.handleClick}>
             <ListItemIcon>
               <InboxIcon />

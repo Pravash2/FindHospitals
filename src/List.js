@@ -60,7 +60,10 @@ class NestedList extends React.Component {
     return this.state.hospital.map(hospital => {
       return (
         <div key={hospital._id}>
-          <Link to={`/hospital/${hospital._id}`} style={{ textDecoration: "none" }}>
+          <Link
+            to={`/hospital/${hospital._id}`}
+            style={{ textDecoration: "none" }}
+          >
             <ListItem button>
               <ListItemIcon>
                 <Edit />

@@ -9,6 +9,9 @@ import "./leaflet.css";
 import List from "./List";
 import HospitalPage from "./Hospitalpage.js";
 import Map4 from "./Map4";
+import List3 from "./List3";
+
+import Diagnosis from "./Diagnosis/Diagnosis";
 
 function App() {
   return (
@@ -24,9 +27,10 @@ const routing = (
     <div>
       <Switch>
         <Route exact path="/" component={App} />
+        <Route path="/disease/:id" component={List3} />
+        <Route path="/diagnosis" component={Diagnosis} />
         <Route path="/search/:search" component={Map4} />
         <Route path="/filter/:type" component={List} />
-        <Route path="/emergency" component={Map4} />
         <Route path="/hospital/:id" component={HospitalPage} />
         <Route path="/:type" component={Map} />
       </Switch>

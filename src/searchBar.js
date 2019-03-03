@@ -99,7 +99,7 @@ class CustomizedInputBase extends React.Component {
       return this.state.hospital.map(hospital => (
         <div key={hospital._id}>
           <Link
-            to={`/hospital/${hospital._id}`}
+            to={`/disease/${hospital._id}`}
             style={{ textDecoration: "none" }}
           >
             <ListItem button>
@@ -132,16 +132,14 @@ class CustomizedInputBase extends React.Component {
           </IconButton>
 
           <Divider className={classes.divider} />
-          <Link to="/emergency">
-            <IconButton
-              color="secondary"
-              className={classes.iconButton}
-              aria-label="Directions"
-            >
-              <DirectionsIcon />
-              <p style={{ fontSize: "8px" }}>Emergency</p>
-            </IconButton>
-          </Link>
+          <IconButton
+            color="secondary"
+            className={classes.iconButton}
+            aria-label="Directions"
+          >
+            <DirectionsIcon />
+            <p style={{ fontSize: "8px" }}>Emergency</p>
+          </IconButton>
         </Paper>
       </div>
     );

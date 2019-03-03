@@ -170,36 +170,30 @@ class FullWidthTabs extends React.Component {
               </List>
             </TabContainer>
             <TabContainer dir={theme.direction}>
-              <Paper>
-                <SearchBar />
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Name</TableCell>
 
-                <Table>
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>Name</TableCell>
+                    <TableCell align="right">Eduction</TableCell>
 
-                      <TableCell align="right">Eduction</TableCell>
+                    <TableCell align="right">Specialties</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody style={{ border: "1px solid black" }}>
+                  {hospital.map(item => {
+                    return (
+                      <TableRow style={{ width: "100px" }}>
+                        <TableCell>{item.name}</TableCell>
 
-                      <TableCell align="right">Specialties</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {hospital.map(item => {
-                      return (
-                        <TableRow>
-                          <TableCell>{item.name}</TableCell>
+                        <TableCell align="right">{item.eduction}</TableCell>
 
-                          <TableCell align="right">{item.eduction}</TableCell>
-
-                          <TableCell align="right">
-                            {item.specialties}
-                          </TableCell>
-                        </TableRow>
-                      );
-                    })}
-                  </TableBody>
-                </Table>
-              </Paper>
+                        <TableCell align="right">{item.specialties}</TableCell>
+                      </TableRow>
+                    );
+                  })}
+                </TableBody>
+              </Table>
             </TabContainer>
             <TabContainer dir={theme.direction}>
               <Paper>

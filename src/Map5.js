@@ -15,6 +15,7 @@ import L from "leaflet";
 import Dialog from "./Dialog.js";
 import Loader from "./Spinner";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const app = [
   "https://uploads.codesandbox.io/uploads/user/6f8b104e-6915-422e-95e8-f395886bcc19/5e6p-045-hospital.pn"
@@ -106,23 +107,26 @@ export default class SimpleExample extends React.Component {
   };
 
   componentDidMount() {
-    const hospitals = this.props.hospitals
-      .filter(hospital => hospital.Location_Coordinates.length == 2)
-      .filter(hospital => hospital.Hospital_Care_Type.length > 2);
-    this.setState({
-      markers: hospitals
-    });
+    let hospital = [];
+    axios
+      .get("https://find-hospital.herokuapp.com/api/hospitals/all")
+      .then(
+        res =>
+          (this.setState({markers: res.data
+            .filter(hospital => hospital.Location_Coordinates.length == 2)
+            .filter(hospital => hospital.Hospital_Care_Type.length > 2)}))
+      );
+    
+    
   }
 
   render() {
     if (this.state.markers.length > 1) {
-      console.log(this.state.markers);
       return (
         <Map
           style={{ height: `${window.innerHeight}px`, flex: 1 }}
           center={[17.597, 78.4863]}
-          zoom={13}
-        >
+          zoom={13}>
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
@@ -134,8 +138,7 @@ export default class SimpleExample extends React.Component {
                   key={`marker-${idx}`}
                   icon={IconUrl[0]}
                   position={position.Location_Coordinates}
-                  opacity={1}
-                >
+                  opacity={1}>
                   <Popup>
                     <p>
                       Call{" "}

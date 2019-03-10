@@ -153,14 +153,14 @@ class FullWidthTabs extends React.Component {
                 <ListItem button>
                   <ListItemText
                     primary="Pincode"
-                    secondary={`{hospital.Pincode}`}
+                    secondary={`${hospital.Pincode}`}
                   />
                 </ListItem>
                 <Divider />
                 <ListItem button>
                   <ListItemText
                     primary="District"
-                    secondary={`hospital.District`}
+                    secondary={`${hospital.District}`}
                   />
                 </ListItem>
                 <Divider />

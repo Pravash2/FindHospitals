@@ -16,39 +16,37 @@ import Dialog from "./Dialog.js";
 import Loader from "./Spinner";
 import { Link } from "react-router-dom";
 
-const app = [
-  "https://uploads.codesandbox.io/uploads/user/6f8b104e-6915-422e-95e8-f395886bcc19/5e6p-045-hospital.pn"
-];
+
 
 const IconUrl = [
   L.icon({
     iconUrl:
-      "https://uploads.codesandbox.io/uploads/user/6f8b104e-6915-422e-95e8-f395886bcc19/KJLJ-045-hospital.png"
+      "https://uploads.codesandbox.io/uploads/user/6f8b104e-6915-422e-95e8-f395886bcc19/IGMZ-hospitalfinal.png"
   }),
   L.icon({
     iconUrl:
-      "https://rawcdn.githack.com/Pravash2/Find_Hospital/36b21d16f06e0e2e991df0910eb19698973d0afd/src/public/icons/095-tooth-1.png"
+      "https://uploads.codesandbox.io/uploads/user/6f8b104e-6915-422e-95e8-f395886bcc19/juAs-dentalfinal.png"
   }),
   L.icon({
     iconUrl:
-      "https://rawcdn.githack.com/Pravash2/Find_Hospital/36b21d16f06e0e2e991df0910eb19698973d0afd/src/public/icons/051-flask.png"
+      "https://uploads.codesandbox.io/uploads/user/6f8b104e-6915-422e-95e8-f395886bcc19/YMvA-046-microscope.png"
   }),
   L.icon({
     iconUrl:
-      "https://rawcdn.githack.com/Pravash2/Find_Hospital/36b21d16f06e0e2e991df0910eb19698973d0afd/src/public/icons/005-blood-1.png"
+      "https://uploads.codesandbox.io/uploads/user/6f8b104e-6915-422e-95e8-f395886bcc19/e7pw-clinicfinals.png"
   }),
 
   L.icon({
     iconUrl:
-      "https://rawcdn.githack.com/Pravash2/Find_Hospital/36b21d16f06e0e2e991df0910eb19698973d0afd/src/public/icons/034-eye-2.png"
+      "https://uploads.codesandbox.io/uploads/user/6f8b104e-6915-422e-95e8-f395886bcc19/XYD3-eyefinal.png"
   }),
   L.icon({
     iconUrl:
-      "https://rawcdn.githack.com/Pravash2/Find_Hospital/36b21d16f06e0e2e991df0910eb19698973d0afd/src/public/icons/006-mortar.png"
+      "https://uploads.codesandbox.io/uploads/user/6f8b104e-6915-422e-95e8-f395886bcc19/1F80-homopathic.png"
   }),
   L.icon({
     iconUrl:
-      "https://rawcdn.githack.com/Pravash2/Find_Hospital/36b21d16f06e0e2e991df0910eb19698973d0afd/src/public/icons/009-mortar-1.png"
+      "https://uploads.codesandbox.io/uploads/user/6f8b104e-6915-422e-95e8-f395886bcc19/TNbI-AurFinal.png"
   }),
   L.icon({
     iconUrl:
@@ -57,7 +55,7 @@ const IconUrl = [
 
   L.icon({
     iconUrl:
-      "https://uploads.codesandbox.io/uploads/user/6f8b104e-6915-422e-95e8-f395886bcc19/UM3C-001-pharmacy.png"
+      "https://uploads.codesandbox.io/uploads/user/6f8b104e-6915-422e-95e8-f395886bcc19/aGvI-vetenaryFinal.png"
   }),
   L.icon({
     iconUrl:
@@ -66,7 +64,7 @@ const IconUrl = [
 
   L.icon({
     iconUrl:
-      "https://uploads.codesandbox.io/uploads/user/6f8b104e-6915-422e-95e8-f395886bcc19/RG1x-childhealthcare.png"
+      "https://uploads.codesandbox.io/uploads/user/6f8b104e-6915-422e-95e8-f395886bcc19/pgip-chc.png"
   })
 ];
 
@@ -120,7 +118,7 @@ export default class SimpleExample extends React.Component {
       return (
         <Map
           style={{ height: `${window.innerHeight}px`, flex: 1 }}
-          center={[17.597, 78.4863]}
+          center={[20.2961, 85.8245]}
           zoom={13}
         >
           <TileLayer

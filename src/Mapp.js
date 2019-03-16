@@ -16,8 +16,6 @@ import Dialog from "./Dialog.js";
 import Loader from "./Spinner";
 import { Link } from "react-router-dom";
 
-
-
 const IconUrl = [
   L.icon({
     iconUrl:
@@ -119,8 +117,7 @@ export default class SimpleExample extends React.Component {
         <Map
           style={{ height: `${window.innerHeight}px`, flex: 1 }}
           center={[20.2961, 85.8245]}
-          zoom={13}
-        >
+          zoom={12}>
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
@@ -132,13 +129,11 @@ export default class SimpleExample extends React.Component {
                   key={`marker-${idx}`}
                   icon={IconUrl[0]}
                   position={position.Location_Coordinates}
-                  opacity={1}
-                >
+                  opacity={1}>
                   <Popup>
                     <Link
                       to={`/hospital/${this.state.markers[idx]._id}`}
-                      style={{ textDecoration: "none" }}
-                    >
+                      style={{ textDecoration: "none" }}>
                       {position.Hospital_Name}
                     </Link>
                   </Popup>
@@ -150,13 +145,11 @@ export default class SimpleExample extends React.Component {
                   key={`marker-${idx}`}
                   icon={IconUrl[1]}
                   position={position.Location_Coordinates}
-                  opacity={1}
-                >
+                  opacity={1}>
                   <Popup>
                     <Link
                       to={`/hospital/${this.state.markers[idx]._id}`}
-                      style={{ textDecoration: "none" }}
-                    >
+                      style={{ textDecoration: "none" }}>
                       {position.Hospital_Name}
                     </Link>
                   </Popup>
@@ -168,13 +161,11 @@ export default class SimpleExample extends React.Component {
                   key={`marker-${idx}`}
                   icon={IconUrl[2]}
                   position={position.Location_Coordinates}
-                  opacity={1}
-                >
+                  opacity={1}>
                   <Popup>
                     <Link
                       to={`/hospital/${this.state.markers[idx]._id}`}
-                      style={{ textDecoration: "none" }}
-                    >
+                      style={{ textDecoration: "none" }}>
                       {position.Hospital_Name}
                     </Link>
                   </Popup>
@@ -186,13 +177,11 @@ export default class SimpleExample extends React.Component {
                   key={`marker-${idx}`}
                   icon={IconUrl[3]}
                   position={position.Location_Coordinates}
-                  opacity={1}
-                >
+                  opacity={1}>
                   <Popup>
                     <Link
                       to={`/hospital/${this.state.markers[idx]._id}`}
-                      style={{ textDecoration: "none" }}
-                    >
+                      style={{ textDecoration: "none" }}>
                       {position.Hospital_Name}
                     </Link>
                   </Popup>
@@ -204,13 +193,11 @@ export default class SimpleExample extends React.Component {
                   key={`marker-${idx}`}
                   icon={IconUrl[4]}
                   position={position.Location_Coordinates}
-                  opacity={1}
-                >
+                  opacity={1}>
                   <Popup>
                     <Link
                       to={`/hospital/${this.state.markers[idx]._id}`}
-                      style={{ textDecoration: "none" }}
-                    >
+                      style={{ textDecoration: "none" }}>
                       {position.Hospital_Name}
                     </Link>
                   </Popup>
@@ -222,13 +209,11 @@ export default class SimpleExample extends React.Component {
                   key={`marker-${idx}`}
                   icon={IconUrl[5]}
                   position={position.Location_Coordinates}
-                  opacity={1}
-                >
+                  opacity={1}>
                   <Popup>
                     <Link
                       to={`/hospital/${this.state.markers[idx]._id}`}
-                      style={{ textDecoration: "none" }}
-                    >
+                      style={{ textDecoration: "none" }}>
                       {position.Hospital_Name}
                     </Link>
                   </Popup>
@@ -240,13 +225,11 @@ export default class SimpleExample extends React.Component {
                   key={`marker-${idx}`}
                   icon={IconUrl[6]}
                   position={position.Location_Coordinates}
-                  opacity={1}
-                >
+                  opacity={1}>
                   <Popup>
                     <Link
                       to={`/hospital/${this.state.markers[idx]._id}`}
-                      style={{ textDecoration: "none" }}
-                    >
+                      style={{ textDecoration: "none" }}>
                       {position.Hospital_Name}
                     </Link>
                   </Popup>
@@ -258,13 +241,11 @@ export default class SimpleExample extends React.Component {
                   key={`marker-${idx}`}
                   icon={IconUrl[7]}
                   position={position.Location_Coordinates}
-                  opacity={1}
-                >
+                  opacity={1}>
                   <Popup>
                     <Link
                       to={`/hospital/${this.state.markers[idx]._id}`}
-                      style={{ textDecoration: "none" }}
-                    >
+                      style={{ textDecoration: "none" }}>
                       {position.Hospital_Name}
                     </Link>
                   </Popup>
@@ -276,13 +257,11 @@ export default class SimpleExample extends React.Component {
                   key={`marker-${idx}`}
                   icon={IconUrl[8]}
                   position={position.Location_Coordinates}
-                  opacity={1}
-                >
+                  opacity={1}>
                   <Popup>
                     <Link
                       to={`/hospital/${this.state.markers[idx]._id}`}
-                      style={{ textDecoration: "none" }}
-                    >
+                      style={{ textDecoration: "none" }}>
                       {position.Hospital_Name}
                     </Link>
                   </Popup>
@@ -294,13 +273,11 @@ export default class SimpleExample extends React.Component {
                   key={`marker-${idx}`}
                   icon={IconUrl[9]}
                   position={position.Location_Coordinates}
-                  opacity={1}
-                >
+                  opacity={1}>
                   <Popup>
                     <Link
                       to={`/hospital/${this.state.markers[idx]._id}`}
-                      style={{ textDecoration: "none" }}
-                    >
+                      style={{ textDecoration: "none" }}>
                       {position.Hospital_Name}
                     </Link>
                   </Popup>
@@ -312,13 +289,11 @@ export default class SimpleExample extends React.Component {
                   key={`marker-${idx}`}
                   icon={IconUrl[10]}
                   position={position.Location_Coordinates}
-                  opacity={1}
-                >
+                  opacity={1}>
                   <Popup>
                     <Link
                       to={`/hospital/${this.state.markers[idx]._id}`}
-                      style={{ textDecoration: "none" }}
-                    >
+                      style={{ textDecoration: "none" }}>
                       {position.Hospital_Name}
                     </Link>
                     />
@@ -327,7 +302,7 @@ export default class SimpleExample extends React.Component {
               );
           })}
 
-          <CircleMarker radius={10} center={[17.597, 78.4863]} />
+          <CircleMarker radius={10} center={[20.2961, 85.8245]} />
         </Map>
       );
     }

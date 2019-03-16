@@ -132,7 +132,7 @@ class CustomizedInputBase extends React.Component {
           </IconButton>
 
           <Divider className={classes.divider} />
-          <Link to="/emer">
+          <Link to="/emer" style={{textDecoration:'none'}}>
           <IconButton
             color="secondary"
             className={classes.iconButton}

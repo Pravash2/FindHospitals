@@ -56,14 +56,7 @@ class TemporaryDrawer extends React.Component {
     const fullList = (
       <div style={{ height: `500px` }} className={classes.fullList}>
         <List>
-          <Link to="/diagnosis" style={{ textDecoration: "none" }}>
-            <ListItem button className={classes.nested}>
-              <ListItemIcon>
-                <Diagonsis />
-              </ListItemIcon>
-              <ListItemText inset primary="Diagnosis" />
-            </ListItem>
-          </Link>
+          
           <ListItem button onClick={this.handleClick}>
             <ListItemIcon>
               <InboxIcon />

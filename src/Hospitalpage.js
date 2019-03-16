@@ -137,30 +137,30 @@ class FullWidthTabs extends React.Component {
                 <ListItem button>
                   <ListItemText
                     primary="Hospital Catrgory"
-                    secondary="Private"
-                    // secondary={`${hospital.Hospital_Category}`}
+                   
+                    secondary={`${this.state.hospital.Hospital_Category}`}
                   />
                 </ListItem>
                 <Divider />
                 <ListItem button>
                   <ListItemText
                     primary="Telephone"
-                    secondary="9658884157"
-                    // secondary={`${hospital.Telephone}`}
+                  
+                    secondary={`${this.state.hospital.Telephone}`}
                   />
                 </ListItem>
                 <Divider />
                 <ListItem button>
                   <ListItemText
                     primary="Pincode"
-                    secondary={`${hospital.Pincode}`}
+                    secondary={`${this.state.hospital.Pincode}`}
                   />
                 </ListItem>
                 <Divider />
                 <ListItem button>
                   <ListItemText
                     primary="District"
-                    secondary={`${hospital.District}`}
+                    secondary={`${this.state.hospital.District}`}
                   />
                 </ListItem>
                 <Divider />
@@ -170,7 +170,7 @@ class FullWidthTabs extends React.Component {
               </List>
             </TabContainer>
             <TabContainer dir={theme.direction}>
-              <Table>
+              <Table >
                 <TableHead>
                   <TableRow>
                     <TableCell>Name</TableCell>

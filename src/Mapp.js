@@ -112,7 +112,7 @@ export default class SimpleExample extends React.Component {
 
   render() {
     if (this.state.markers.length > 1) {
-      console.log(this.state.location);
+      console.log(this.state);
       return (
         <Map
           style={{ height: `${window.innerHeight}px`, flex: 1 }}

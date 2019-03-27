@@ -33,6 +33,7 @@ export default class App extends React.Component {
   render() {
     const { markerPosition } = this.state;
     if (this.state.hospital.length > 1) {
+      console.log(this.state.hospital,this.props.hospital)
       return (
         <div>
           <Map

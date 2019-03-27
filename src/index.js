@@ -13,6 +13,7 @@ import Map5 from "./Map5";
 import List3 from "./List3";
 
 import Diagnosis from "./Diagnosis/Diagnosis";
+import FirstPage from "./FirstPage";
 
 function App() {
   return (
@@ -27,7 +28,8 @@ const routing = (
   <Router>
     <div>
       <Switch>
-        <Route exact path="/" component={App} />
+        <Route exact path="/" component={FirstPage} />
+        <Route exact path="/main" component={App} />
         <Route path="/disease/:id" component={List3} />
         <Route path="/emer" component={Map5} />
         <Route path="/diagnosis" component={Diagnosis} />
